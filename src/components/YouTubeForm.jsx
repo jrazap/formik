@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Formik,
   Form,
@@ -11,6 +11,8 @@ import * as Yup from "yup";
 import ErrorText from "./ErrorText";
 
 const YouTubeForm = () => {
+  const [data, setData] = useState(null);
+
   const initialValues = {
     name: "",
     email: "",
@@ -23,6 +25,20 @@ const YouTubeForm = () => {
     },
     phoneNumbers: ["", ""],
     phNumbers: [""],
+  };
+
+  const savedValues = {
+    name: "Mohamed Elazap",
+    email: "jrazap@gmail.com",
+    channel: "Mohamed Elazap",
+    comment: "Welcome to Formik",
+    address: "221b Baker Street",
+    social: {
+      twitter: "https://twitter.com/jrazap1",
+      facebook: "https://fb.com/jrazap1",
+    },
+    phoneNumbers: ["01011087724", "01211382990"],
+    phNumbers: ["01011087724"],
   };
 
   const validateComment = (value) => {
@@ -51,17 +67,18 @@ const YouTubeForm = () => {
     setTimeout(() => {
       onSubmitProps.setSubmitting(false);
       onSubmitProps.resetForm();
-    }, 2000);
+    }, 1000);
   };
 
   return (
     <Formik
-      initialValues={initialValues}
+      initialValues={data || initialValues}
       onSubmit={onSubmit}
       validationSchema={validationSchema}
       // validateOnChange={false}
       // validateOnBlur={false}
       // validateOnMount
+      enableReinitialize
     >
       {(formik) => {
         return (
@@ -233,7 +250,7 @@ const YouTubeForm = () => {
 
             <div className="form-group">
               <div className="row gap-1">
-                <button
+                {/* <button
                   type="button"
                   className="btn btn-warning w-auto"
                   onClick={() => {
@@ -273,14 +290,23 @@ const YouTubeForm = () => {
                   }}
                 >
                   Visit All
-                </button>
+                </button> */}
                 <button
                   type="button"
-                  className="btn btn-primary w-auto"
-                  disabled={!formik.isValid || formik.isSubmitting}
+                  className="btn btn-warning w-auto"
                   onClick={() => {
-                    formik.submitForm();
+                    setData(savedValues);
                   }}
+                >
+                  Load Saved Data
+                </button>
+                <button type="reset" className="btn btn-dark w-auto">
+                  Reset
+                </button>
+                <button
+                  type="submit"
+                  className="btn btn-dark w-auto"
+                  disabled={!formik.isValid || formik.isSubmitting}
                 >
                   Submit
                 </button>
