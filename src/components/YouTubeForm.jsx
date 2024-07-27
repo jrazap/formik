@@ -42,12 +42,16 @@ const YouTubeForm = () => {
       .email("Invalid email address")
       .required("Email is required"),
     channel: Yup.string().required("Channel is required"),
-    // comment: Yup.string().required("Comment is required"),
     address: Yup.string().required("Address is required"),
   });
 
-  const onSubmit = (values) => {
-    console.log(values);
+  const onSubmit = (values, onSubmitProps) => {
+    console.log("Form Values", values);
+    console.log("Submit Props", onSubmitProps);
+    setTimeout(() => {
+      onSubmitProps.setSubmitting(false);
+      onSubmitProps.resetForm();
+    }, 2000);
   };
 
   return (
@@ -57,6 +61,7 @@ const YouTubeForm = () => {
       validationSchema={validationSchema}
       // validateOnChange={false}
       // validateOnBlur={false}
+      // validateOnMount
     >
       {(formik) => {
         return (
@@ -272,6 +277,7 @@ const YouTubeForm = () => {
                 <button
                   type="button"
                   className="btn btn-primary w-auto"
+                  disabled={!formik.isValid || formik.isSubmitting}
                   onClick={() => {
                     formik.submitForm();
                   }}
