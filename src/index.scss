@@ -17,13 +17,12 @@ body {
   margin: 0;
   display: flex;
   place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  min-inline-size: 320px;
+  min-block-size: 100vh;
 }
 
 form {
-  max-width: 100%;
-  margin-top: 2rem;
+  max-inline-size: 100%;
   padding: 1rem;
   background-color: #fff;
   border-radius: 4px;
@@ -36,24 +35,25 @@ form {
   -ms-border-radius: 1rem;
   -o-border-radius: 1rem;
   margin-inline-start: 3rem;
-}
 
-label {
-  font-weight: bold;
-  display: flex;
-  margin-block-end: 0.25rem;
-}
-.form-group {
-  margin-block-end: 1rem;
-}
+  .form-group {
+    margin-block-end: 1rem;
 
-.form-control {
-  display: block;
-  inline-size: 400px;
-  padding: 0.5rem;
-  font-size: 0.8rem;
-  color: #555;
-  background-color: #fff;
-  box-shadow: none;
-  border: 1px solid #ccc;
+    label {
+      font-weight: bold;
+      display: flex;
+      margin-block-end: 0.25rem;
+    }
+
+    .form-control {
+      display: block;
+      inline-size: 400px;
+      padding: 0.5rem;
+      font-size: 0.8rem;
+      color: #555;
+      background-color: #fff;
+      box-shadow: none;
+      border: 1px solid #ccc;
+    }
+  }
 }
