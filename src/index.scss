@@ -17,12 +17,12 @@ body {
   margin: 0;
   display: flex;
   place-items: center;
-  min-inline-size: 320px;
   min-block-size: 100vh;
 }
 
 form {
-  max-inline-size: 100%;
+  min-inline-size: 600px;
+  margin-block: 3rem;
   padding: 1rem;
   background-color: #fff;
   border-radius: 4px;
@@ -47,7 +47,7 @@ form {
 
     .form-control {
       display: block;
-      inline-size: 400px;
+      inline-size: 100%;
       padding: 0.5rem;
       font-size: 0.8rem;
       color: #555;
